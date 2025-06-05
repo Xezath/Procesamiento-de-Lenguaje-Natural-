@@ -1,36 +1,65 @@
-
-
 import re
+from typing import List, Dict
+from unidecode import unidecode
 
-def verificar_protocolo(texto_transcrito):
-    texto = texto_transcrito.lower()
+def verificar_protocolo(
+    tokens_agente: List[str],
+    texto_agente_completo: str
+) -> Dict[str, object]:
+    """
+    Verifica si el agente cumplió las fases del protocolo:
+      - Saludo inicial: detecta tokens de saludo en 'tokens_agente'.
+      - Identificación: busca patrones genéricos en el texto normalizado.
+      - Uso de palabras rudas: detecta tokens prohibidos.
+      - Despedida amable: busca frases de despedida en el texto normalizado.
 
-    saludos = [
-        r"\bhola\b", r"\bbuen[oa]s?\b", r"\bbuen d[ií]a\b",
-        r"\bbuenas tardes\b", r"\bbuenas noches\b"
-    ]
-    saludo_ok = any(re.search(pat, texto) for pat in saludos)
-
-    patrones_identificacion = [
-        r"con qui[ée]n tengo el gusto", r"me puede decir su nombre",
-        r"su nombre es", r"dígame su nombre", r"podr[ií]a darme su nombre", r"quien habla"
-    ]
-    identificacion_ok = any(re.search(pat, texto) for pat in patrones_identificacion)
-
-    palabras_rudas = {
-        "inútil", "tonto", "idiota", "estúpido", "imbécil", "asco", "burro", "pendejo", "cerdo", "cabrón", "mierda"
+    Retorna un diccionario con:
+      {
+        "saludo": {"ok": bool},
+        "identificacion": {"ok": bool},
+        "rudas": {"lista": List[str]},
+        "despedida": {"ok": bool}
+      }
+    """
+    # 1) Fase de saludo (basta con que aparezca alguno de estos tokens)
+    saludos_tokens = {
+        "hola", "buenos", "buen", "bienvenido", "buenas", "alto", "hola", "buenas",
+        "tarde", "noche", "gracias"
     }
-    ruda_encontrada = [pr for pr in palabras_rudas if re.search(rf"\b{re.escape(pr)}\b", texto)]
+    saludo_ok = any(tok in saludos_tokens for tok in tokens_agente)
 
-    patrones_despedida = [
-        r"gracias por su tiempo", r"que tenga un buen d[ií]a", r"gracias por llamarnos",
-        r"hasta luego", r"\bad[ií]os\b", r"ante cualquier duda"
-    ]
-    despedida_ok = any(re.search(pat, texto) for pat in patrones_despedida)
+    # 2) Fase de identificación: patrones genéricos (texto normalizado sin tildes)
+    ta = unidecode(texto_agente_completo.lower())
+    identificacion_ok = False
+    for pattern in [
+        r"con quien tengo el gusto",
+        r"como se llama",
+        r"su nombre",
+        r"me puede decir su nombre"
+    ]:
+        if re.search(pattern, ta):
+            identificacion_ok = True
+            break
+
+    # 3) Palabras rudas: si el agente usa alguna de estas, se registra
+    prohibidas = {"inutil", "tonto", "idiota", "asqueroso", "imbecil"}
+    palabras_rudas_usadas = [tok for tok in tokens_agente if tok in prohibidas]
+
+    # 4) Despedida amable: buscar frases completas (texto normalizado)
+    despedida_ok = False
+    for phrase in [
+        "gracias por su tiempo",
+        "que tenga un buen dia",
+        "hasta luego",
+        "cualquier consulta no dude en llamar"
+    ]:
+        if phrase in ta:
+            despedida_ok = True
+            break
 
     return {
-        "Saludo inicial": saludo_ok,
-        "Identificación del cliente": identificacion_ok,
-        "Palabras rudas": ruda_encontrada,
-        "Despedida amable": despedida_ok
+        "saludo": {"ok": saludo_ok},
+        "identificacion": {"ok": identificacion_ok},
+        "rudas": {"lista": palabras_rudas_usadas},
+        "despedida": {"ok": despedida_ok}
     }
