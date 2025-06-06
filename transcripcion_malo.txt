@@ -1,0 +1,8 @@
+Agente: Hola, le doy la bienvenida al servicio de atención. ¿En qué puedo ayudarle hoy?
+Cliente: Buenas tardes. Estoy muy molesto porque mi pedido llegó mal y en mal estado.
+Agente: Lamento mucho la situación. ¿Puede describirme el problema con más detalle?
+Cliente: Sí, el producto está roto y no funciona, es inaceptable. Además, intenté llamar varias veces y nadie responde.
+Agente: Comprendo su frustración. Voy a revisar el historial de su pedido ahora mismo.
+Cliente: Esto es terrible. Siempre han sido muy ineficientes y su servicio es pésimo.
+Agente: Le pido disculpas. Procederé a tramitar un reembolso inmediato.
+Cliente: Está bien, pero dudo que esta pesadilla termine pronto. Gracias de todas formas.

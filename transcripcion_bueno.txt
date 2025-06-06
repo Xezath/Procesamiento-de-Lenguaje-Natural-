@@ -1,0 +1,13 @@
+Agente: Hola, bienvenido al servicio de atención al cliente. ¿Con quién tengo el gusto de hablar?
+Cliente: Buenas tardes, mi nombre es Carla López y tengo un problema con mi factura.
+Agente: Mucho gusto, Carla. Por favor, indíqueme su número de cliente.
+Cliente: Claro, es el 987654. La factura llegó muy alta y no estoy conforme.
+Agente: Entiendo su molestia. Reviseé su cuenta y veo un cargo extra por servicio adicional.
+Cliente: Eso es inaceptable. Nunca solicité ningún servicio extra y me parece absurdo pagar más.
+Agente: Lamento la confusión. Procedo a revisar el historial y veo que se activó un paquete premium.
+Cliente: ¿Cómo ocurrió eso? Fue un error del sistema. Esto es un desastre.
+Agente: Correcto, voy a anular el cargo y emitir una nota de crédito. Quedará resuelto en breve.
+Cliente: Perfecto, agradezco su ayuda. Muchas gracias.
+Agente: Gracias a usted, Carla. ¿Algo más en lo que pueda ayudarle hoy?
+Cliente: No, eso es todo. Feliz tarde.
+Agente: Gracias por su tiempo. Que tenga un excelente día.

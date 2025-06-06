@@ -835,7 +835,7 @@ yo,otros,0
 tu,otros,0
 vos,otros,0
 bueno,otros,0
-noche,saludo,0buenas,saludo,0
+noche,saludo,0
 buenas,saludo,0
 le,otros,0
 anna,otros,0
@@ -868,8 +868,6 @@ gomez,otros,0
 televisor,otros,0
 anoche,otros,0
 smart,otros,0
-tv,otros,0
-x200,otros,0
 frontal,otros,0
 parpadea,otros,0
 luego,otros,0
@@ -878,3 +876,6 @@ ana,otros,0
 ya,otros,0
 correctamente,otros,0
 muchas,otros,0
+tv,otros,0
+x200,otros,0
+conectarlo,otros,0

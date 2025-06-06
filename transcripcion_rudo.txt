@@ -1,0 +1,9 @@
+Agente: ¿En qué le puedo ayudar esta vez?
+Cliente: Buenas tardes. He notado un cargo extra en mi factura.
+Agente: Eso es inútil de discutir si no revisa los detalles de su cuenta.
+Cliente: Ya revisé los detalles y no encuentro explicación.
+Agente: Bueno, veré qué se puede hacer, pero no espere demasiado.
+Cliente: ¿No podría al menos confirmar mi número de cliente?
+Agente: No hace falta, ya lo tengo registrado aquí.
+Cliente: Está bien, pero necesito una solución, por favor.
+Agente: Lo revisaré y le aviso cuando sepa algo.
